@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="row g-3" (ngSubmit)="analyzeIngredients(form)" #form="ngForm">
+    <div class="col-12">
+      <!-- Note Alert -->
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Note</h4>
+        <p></p>
+        <p class="mb-0">
+          Put all ingredient line by line. Each line should contain food name, quantity and unit.
+        </p>
+      </div>
+      <!-- Ingredients Textarea -->
+      <label for="ingredients" class="form-label fw-bold">Enter Recipe Ingredients :</label>
+      <div class="text-end">
+        <button class="btn text-primary border-0 mb-2" type="button" (click)="setSampleIngredients()">
+          Try a Sample Recipe
+        </button>
+      </div>
+      <textarea  name="ingredients" id="ingredients" rows="12" class="form-control" [(ngModel)]="recipeIngredients"  required ></textarea>
+    </div>
+    <!-- Submit Button -->
+    <div class="col-12">
+      <button class="btn btn-primary btn-lg w-100" type="submit" [disabled]="!form.valid">Analyse</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,145 @@
+<!-- Ingredients Summary -->
+<div class="container">
+  <div class="col-12">
+    <h3 class="text-center">Ingredients Summary</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingr of ingredientsAnalysis">
+        <h4 class="text-success mb-0">{{ingr.ingredientStr}}</h4>
+        <span class="fw-bold">Calories: </span>{{ingr.calories}}
+        <br>
+        <span class="fw-bold">Total Weight: </span>{{ingr.totalWeight}}
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Nutrition Analysis Button -->
+<div class="container">
+  <div class="col-12">
+    <button class="btn btn-primary btn-lg w-100 my-3" (click)="nutritionAnalysis()" [disabled]="loadingNutrition" >
+      <span *ngIf="!loadingNutrition">
+        Nutrition Analysis
+      </span>
+      <!-- Spinner -->
+      <div class="spinner-border text-light" role="status" *ngIf="loadingNutrition" >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </button>
+    <div class="alert alert-danger my-2" *ngIf="errorMessage">{{errorMessage}}</div>
+  </div>
+</div>
+<!-- Total Calculation  -->
+<div class="container">
+  <div class="col-12 mb-5 p-3 border" *ngIf="nutritionAnalysisObj">
+    <h3 class="text-success text-center">
+      Total Calculation
+    </h3>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        <span class="label">
+          Calories :
+        </span>
+        {{nutritionAnalysisObj.calories}}
+      </li>
+      <li class="list-group-item list-group-item-secondary">
+        <span class="label">
+          Fat :
+        </span>
+        {{nutritionAnalysisObj.totalNutrients.FAT.quantity}} {{nutritionAnalysisObj.totalNutrients.FAT.unit}}
+      </li>
+      <li class="list-group-item list-group-item-info">
+        <span class="label">
+          Cholesterol :
+        </span>
+        {{nutritionAnalysisObj.totalNutrients.CHOLE.quantity}} {{nutritionAnalysisObj.totalNutrients.CHOLE.unit}}
+      </li>
+      <li class="list-group-item list-group-item-secondary">
+        <span class="label">
+          Sodium :
+        </span>
+        {{nutritionAnalysisObj.totalNutrients.NA.quantity}} {{nutritionAnalysisObj.totalNutrients.NA.unit}}
+      </li>
+      <li class="list-group-item list-group-item-info">
+        <span class="label">
+          Carbohydrate (Fiber, Sugar)
+        </span>
+        <div class="ps-2">
+          <span class="label">
+            Fiber:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.FIBTG.quantity}} {{nutritionAnalysisObj.totalNutrients.FIBTG.unit}}
+          <br>
+          <span class="label">
+            Sugar:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.SUGAR.quantity}} {{nutritionAnalysisObj.totalNutrients.SUGAR.unit}}
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-secondary">
+        <span class="label">
+          Protein:
+        </span>
+        {{nutritionAnalysisObj.totalNutrients.PROCNT.quantity}} {{nutritionAnalysisObj.totalNutrients.PROCNT.unit}}
+      </li>
+      <li class="list-group-item list-group-item-info">
+        <span class="label">
+
+        </span>
+        Vitamin:
+        <div class="ps-3">
+          <span class="label">
+            {{nutritionAnalysisObj.totalNutrients.TOCPHA.label}}:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.TOCPHA.quantty}} {{nutritionAnalysisObj.totalNutrients.TOCPHA.unit}}
+          <br>
+          <span class="label">
+            {{nutritionAnalysisObj.totalNutrients.VITA_RAE.label}}:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.VITA_RAE.quantity}} {{nutritionAnalysisObj.totalNutrients.VITA_RAE.unit}}
+          <br>
+          <span class="label">
+            {{nutritionAnalysisObj.totalNutrients.VITB6A.label}}:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.VITB6A.quantity}} {{nutritionAnalysisObj.totalNutrients.VITB6A.unit}}
+          <br>
+          <span class="label">
+            {{nutritionAnalysisObj.totalNutrients.VITB12.label}}:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.VITB12.quantity}} {{nutritionAnalysisObj.totalNutrients.VITB12.unit}}
+          <br>
+          <span class="label">
+            {{nutritionAnalysisObj.totalNutrients.VITC.label}}:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.VITC.quantity}} {{nutritionAnalysisObj.totalNutrients.VITC.unit}}
+          <br>
+          <span class="label">
+            {{nutritionAnalysisObj.totalNutrients.VITD.label}}:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.VITD.quantity}} {{nutritionAnalysisObj.totalNutrients.VITD.unit}}
+          <br>
+          <span class="label">
+            {{nutritionAnalysisObj.totalNutrients.VITK1.label}}:
+          </span>
+          {{nutritionAnalysisObj.totalNutrients.VITK1.quantity}} {{nutritionAnalysisObj.totalNutrients.VITK1.unit}}
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-secondary">
+        <span class="label">
+          Calcium:
+        </span>
+        {{nutritionAnalysisObj.totalNutrients.CA.quantity}} {{nutritionAnalysisObj.totalNutrients.CA.unit}}
+      </li>
+      <li class="list-group-item list-group-item-info">
+        <span class="label">
+          Iron:
+        </span>
+        {{nutritionAnalysisObj.totalNutrients.FE.quantity}} {{nutritionAnalysisObj.totalNutrients.FE.unit}}
+      </li>
+      <li class="list-group-item list-group-item-secondary">
+        <span class="label">
+          Potassium:
+        </span>
+        {{nutritionAnalysisObj.totalNutrients.K.quantity}} {{nutritionAnalysisObj.totalNutrients.K.unit}}
+      </li>
+    </ul>
+  </div>
+</div>
